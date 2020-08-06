@@ -12,7 +12,7 @@ export class UsersService {
         private readonly usersRepository: Repository<User>,
     ){}
 
-    create(createUserDto: CreateUserDto): Promise<User> {
+    async create(createUserDto: CreateUserDto): Promise<User> {
         const user = new User();
         user.name = createUserDto.name;
         user.description = createUserDto.description;
@@ -22,7 +22,7 @@ export class UsersService {
         return this.usersRepository.save(user);
     }
 
-    findAll(): Promise<User[]> {
+    async findAll(): Promise<User[]> {
         return this.usersRepository.find();
     }
 

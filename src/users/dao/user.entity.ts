@@ -9,7 +9,7 @@ export class User {
     name: string;
 
     @Column()
-    dob: string;
+    dob: Date;
 
     @Column()
     address: string;

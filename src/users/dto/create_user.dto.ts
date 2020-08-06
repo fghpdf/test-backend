@@ -1,6 +1,6 @@
 export interface CreateUserDto {
     name: string
-    dob: string
+    dob: Date
     address: string
     description: string
 }

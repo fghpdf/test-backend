@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Post, Delete, Body, BadRequestException } from '@nestjs/common';
+import { Controller, Get, Param, Post, Delete, Body, NotFoundException } from '@nestjs/common';
 import { CreateUserDto } from './dto/create_user.dto';
 import { UsersService } from './users.service';
 import { User } from './dao/user.entity';
@@ -13,7 +13,7 @@ export class UsersController {
     async findOne(@Param('id') id: string): Promise<User> {
         const user = await this.usersService.findOne(id);
         if (user == null) {
-            throw new BadRequestException("No user!");
+            throw new NotFoundException("No User!");
         }
 
         return user;
