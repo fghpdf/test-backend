@@ -1,80 +1,73 @@
 FORMAT: 1A
-HOST: https://polls.apiblueprint.org/
+HOST: http://localhost:3000/
 
 # test-backend
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+Wiredcraft Back-end Developer Test
 
-## Questions Collection [/questions]
 
-### List All Questions [GET]
+## Users Collection [/users]
 
-+ Response 200 (application/json)
+### Create a New User [POST]
 
-        [
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
-            }
-        ]
-
-### Create a New Question [POST]
-
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
+You can create a user by json object.
 
 + Request (application/json)
 
         {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
+            "name": "Jason Young",
+            "dob": "1980-10-04",
+            "address": "西南",
+            "description": "Ncklm rtsx qgvmxkv pswzaouig vkvvd hhmvlbpik nrcu mvrn qpcc yyeetdasd emu vjpb. Gxdiut tpdefbqx slft tdmlwkr gmxsxk ccif sciyqmwle ibbe udubna uxytwqdv vlujhfqm juk mwrqtbd."
         }
 
 + Response 201 (application/json)
 
-    + Headers
+    + Body
 
-            Location: /questions/2
+            {
+                "name": "Jason Young",
+                "description": "Ncklm rtsx qgvmxkv pswzaouig vkvvd hhmvlbpik nrcu mvrn qpcc yyeetdasd emu vjpb. Gxdiut tpdefbqx slft tdmlwkr gmxsxk ccif sciyqmwle ibbe udubna uxytwqdv vlujhfqm juk mwrqtbd.",
+                "dob": "1980-10-04",
+                "address": "西南",
+                "id": 2,
+                "createdAt": "2020-08-06T19:30:11.473Z"
+            }
+            
+
+## Users [/users/{user_id}]
++ Parameters
+    + user_id - ID of the user
+    
+### Find a User by id [GET]
+
++ Response 200 (application/json)
 
     + Body
 
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
+                "name": "Jason Young",
+                "description": "Ncklm rtsx qgvmxkv pswzaouig vkvvd hhmvlbpik nrcu mvrn qpcc yyeetdasd emu vjpb. Gxdiut tpdefbqx slft tdmlwkr gmxsxk ccif sciyqmwle ibbe udubna uxytwqdv vlujhfqm juk mwrqtbd.",
+                "dob": "1980-10-04",
+                "address": "西南",
+                "id": 2,
+                "createdAt": "2020-08-06T19:30:11.473Z"
             }
+            
++ Response 404 (application/json)
+    cannot find the user.
+    + Body
+    
+            {
+                "statusCode": 404,
+                "message": "No User!",
+                "error": "Not Found"
+            }
+
+### Update a User by id [POST]
+
++ Response 201 (text/plain)
+
+### Delete a User by id [DELETE]
+
++ Response 200 (text/plain)
