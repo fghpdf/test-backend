@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
+// TODO: use config
 @Module({
   imports: [TypeOrmModule.forRoot({
     type: 'mysql',

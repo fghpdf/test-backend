@@ -1,4 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn } from 'typeorm';
+import { type } from 'os';
 
 @Entity()
 export class User {
@@ -14,7 +15,7 @@ export class User {
     @Column()
     address: string;
 
-    @Column()
+    @Column("varchar", { length: 200 })
     description: string;
 
     @CreateDateColumn()
